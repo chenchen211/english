@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".ui.LoginActivity">
     <include layout="@layout/layout_title"/>
     <LinearLayout
         android:weightSum="4"
@@ -24,11 +24,13 @@
         android:layout_width="0dp"
         android:layout_height="match_parent">
         <EditText
+            android:hint="@string/hint_username"
             android:digits="@string/username_limit"
-            android:drawableLeft="@mipmap/icon_username"
+            android:drawableLeft="@mipmap/icon_mobile"
             android:id="@+id/et_login_username"
             style="@style/et_login_style" />
         <EditText
+            android:hint="@string/hint_password"
             android:drawableLeft="@mipmap/icon_password"
             android:inputType="textPassword"
             android:id="@+id/et_login_password"
@@ -38,6 +40,7 @@
             android:orientation="horizontal"
             style="@style/et_login_style">
             <EditText
+                android:hint="@string/hint_verify"
                 android:layout_weight="2"
                 android:inputType="number"
                 android:background="@color/white"
@@ -72,7 +75,7 @@
             android:background="@null"
             android:textSize="16sp"
             android:textColor="@color/red"
-            android:text="@string/register"
+            android:text="@string/go_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>

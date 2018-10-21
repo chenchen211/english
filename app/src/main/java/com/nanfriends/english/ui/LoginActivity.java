@@ -1,6 +1,8 @@
-package com.nanfriends.english;
+package com.nanfriends.english.ui;
 
 import android.os.Bundle;
+
+import com.nanfriends.english.R;
 
 import org.xutils.view.annotation.ContentView;
 
