@@ -19,11 +19,7 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         x.view().inject(this);
     }
-    protected void changeActivity(Class<?> activity){
-        Intent intent = new Intent(this,activity);
-        startActivity(intent);
-    }
-    protected void changeActivity(Class<?> activity, boolean isFinish){
+    public void changeActivity(Class<?> activity, boolean isFinish){
         Intent intent = new Intent(this,activity);
         startActivity(intent);
         if(isFinish){
@@ -38,19 +34,19 @@ public class BaseActivity extends AppCompatActivity {
                 break;
         }
     }
-    protected void changeActivity(Intent intent, boolean isFinish){
+    public void changeActivity(Intent intent, boolean isFinish){
         startActivity(intent);
         if(isFinish){
             finish();
         }
     }
-    protected void saveToken(String token){
+    public void saveToken(String token){
         MyApp.instances.setToken(token);
     }
-    protected String getToken(){
+    public String getToken(){
         return MyApp.instances.getToken();
     }
-    protected SPUtils getSP(){
+    public SPUtils getSP(){
         return MyApp.instances.getSP();
     }
 }

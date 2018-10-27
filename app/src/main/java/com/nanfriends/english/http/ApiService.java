@@ -10,16 +10,17 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiService {
-    public static final String BASE_URL="http://127.0.0.1/";
+
+    String BASE_URL="http://192.168.114.101:8080/test/";
 
     @FormUrlEncoded
-    @POST("login")
+    @POST("log.do")
     Call<ResponseBody> login(String username,String password,String code);
 
-    @GET("verify")
+    @GET("getCode.do")
     Call<ResponseBody> getCode();
 
     @FormUrlEncoded
-    @POST("register")
+    @POST("register.do")
     Call<ResponseBody> register(@FieldMap Map<String,String> param);
 }

@@ -1,15 +1,17 @@
 package com.nanfriends.english.contract;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
 
 import com.chenchen.collections.http.HttpResult;
 
+import java.util.Map;
+
 import okhttp3.ResponseBody;
 
-public interface LoginContract {
+public interface RegisterContract {
+    
     interface Model {
-        void login(String username, String password, String code, HttpResult<ResponseBody> result);
+        void register(Map<String,String> param, HttpResult<ResponseBody> result);
         void refresh_code(HttpResult<ResponseBody> result);
     }
 
@@ -20,7 +22,7 @@ public interface LoginContract {
     }
 
     interface Presenter {
-        void login(String username, String password, String code);
+        void register(Map<String,String> param);
         void refresh_code();
     }
 }

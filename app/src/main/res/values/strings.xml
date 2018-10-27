@@ -12,4 +12,5 @@
     <string name="problem">在项目中的编写你的需求,还是在你的assets文件下放一个sample.pdf的文件，在java代码中编写需求</string>
     <string name="option">这是什么东西</string>
     <string name="type">阅读理解</string>
+    <string name="hint_name">请输入姓名</string>
 </resources>

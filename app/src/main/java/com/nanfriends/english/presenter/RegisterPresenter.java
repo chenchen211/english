@@ -5,42 +5,40 @@ import android.graphics.BitmapFactory;
 
 import com.chenchen.collections.http.HttpResult;
 import com.google.gson.Gson;
-import com.nanfriends.english.bean.User;
-import com.nanfriends.english.contract.LoginContract;
-import com.nanfriends.english.model.LoginModel;
-import com.nanfriends.english.ui.MainActivity;
+import com.nanfriends.english.bean.Base;
+import com.nanfriends.english.contract.RegisterContract;
+import com.nanfriends.english.model.RegisterModel;
+import com.nanfriends.english.ui.LoginActivity;
 
 import java.io.IOException;
+import java.util.Map;
 
 import okhttp3.ResponseBody;
 
-public class LoginPresenter implements LoginContract.Presenter {
+public class RegisterPresenter implements RegisterContract.Presenter {
+    private RegisterContract.Model model;
+    private RegisterContract.View view;
 
-    private LoginContract.Model model;
-    private LoginContract.View view;
-
-    public LoginPresenter(LoginContract.View view) {
-        this.model = new LoginModel(this);
+    public RegisterPresenter(RegisterContract.View view) {
+        this.model = new RegisterModel();
         this.view = view;
     }
 
     @Override
-    public void login(String username, String password, String code) {
-        model.login(username, password, code, new HttpResult<ResponseBody>() {
+    public void register(Map<String, String> param) {
+        if(param == null || param.isEmpty()) view.tip("参数不能为空");
+        model.register(param, new HttpResult<ResponseBody>() {
             @Override
             public void response(ResponseBody responseBody) {
-                Gson gson = new Gson();
                 try {
-                    User user = gson.fromJson(responseBody.string(),User.class);
-                    if(user != null){
-                        if(user.getCode() == 1){
-                            view.success();
-                        }else{
-                            view.tip(user.getMsg());
-                        }
+                    Base base = new Gson().fromJson(responseBody.string(),Base.class);
+                    if(base.getCode()==1){
+                        view.success();
+                    }else{
+                        view.tip(base.getMsg());
                     }
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    view.tip("响应数据出错");
                 }
             }
         });

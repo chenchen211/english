@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 
 import com.chenchen.collections.widget.DividerItemDecoration;
 import com.nanfriends.english.R;
-import com.nanfriends.english.adapter.ProblemAdapter;
 import com.nanfriends.english.bean.Option;
 import com.nanfriends.english.bean.Problem;
 import com.zhy.adapter.recyclerview.CommonAdapter;

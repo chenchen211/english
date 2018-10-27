@@ -42,7 +42,6 @@
             <EditText
                 android:hint="@string/hint_verify"
                 android:layout_weight="2"
-                android:inputType="number"
                 android:background="@color/white"
                 android:drawableLeft="@mipmap/icon_verify"
                 android:id="@+id/et_login_verify"
@@ -71,7 +70,7 @@
             android:textSize="18sp"
             />
         <Button
-            android:id="@+id/btn_register"
+            android:id="@+id/btn_go_register"
             android:background="@null"
             android:textSize="16sp"
             android:textColor="@color/red"
