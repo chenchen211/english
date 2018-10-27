@@ -3,6 +3,7 @@ package com.nanfriends.english.model;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import com.chenchen.collections.http.HttpHelper;
 import com.chenchen.collections.http.HttpResult;
 import com.chenchen.collections.http.ServiceFactory;
 import com.google.gson.Gson;
@@ -23,7 +24,7 @@ public class LoginModel implements LoginContract.Model {
     private ApiService service;
 
     public LoginModel(LoginPresenter presenter) {
-        service = ServiceFactory.createService(ApiService.class,MyApp.instances.getContext(),ApiService.BASE_URL);
+        service = HttpHelper.getInstance(MyApp.instances.getContext(),ApiService.BASE_URL).getService(ApiService.class);
     }
 
     @Override

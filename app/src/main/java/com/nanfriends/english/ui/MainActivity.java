@@ -43,7 +43,7 @@ public class MainActivity extends BaseActivity {
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        changeActivity(ReaderActivity.class,false);
+                        changeActivity(ListenActivity.class,false);
                     }
                 });
             }

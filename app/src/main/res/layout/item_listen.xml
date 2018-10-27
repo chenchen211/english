@@ -4,13 +4,22 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:id="@+id/audio"
+        android:gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/iv_audio"
+            android:src="@mipmap/icon_play"
+            android:layout_width="48dp"
+            android:layout_height="48dp" />
         <SeekBar
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:id="@+id/sb_audio"
             android:max="100"
+            android:progress="50"
             android:layout_width="match_parent"
             android:layout_height="10dp" />
     </LinearLayout>
