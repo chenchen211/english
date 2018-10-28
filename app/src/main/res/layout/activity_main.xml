@@ -7,9 +7,84 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
     <include layout="@layout/layout_title"/>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_type"
+    <LinearLayout
+        android:id="@+id/listen"
+        android:layout_marginBottom="1dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/white"
+        android:layout_height="48dp">
+        <TextView
+            android:gravity="center"
+            android:text="@string/listen"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:src="@mipmap/icon_right_gray"
+            android:layout_width="32dp"
+            android:layout_height="32dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/reader"
+        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/white"
+        android:layout_height="48dp">
+        <TextView
+            android:gravity="center"
+            android:text="@string/type"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:src="@mipmap/icon_right_gray"
+            android:layout_width="32dp"
+            android:layout_height="32dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/translate"
+        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/white"
+        android:layout_height="48dp">
+        <TextView
+            android:gravity="center"
+            android:text="@string/translate"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:src="@mipmap/icon_right_gray"
+            android:layout_width="32dp"
+            android:layout_height="32dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/writer"
+        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/white"
+        android:layout_height="48dp">
+        <TextView
+            android:gravity="center"
+            android:text="@string/writer"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:src="@mipmap/icon_right_gray"
+            android:layout_width="32dp"
+            android:layout_height="32dp" />
+    </LinearLayout>
 </LinearLayout>

@@ -1,5 +1,8 @@
 package com.nanfriends.english.http;
 
+import com.nanfriends.english.bean.Question;
+import com.nanfriends.english.bean.SProblem;
+
 import java.util.Map;
 
 import okhttp3.ResponseBody;
@@ -15,7 +18,7 @@ import retrofit2.http.Url;
 
 public interface ApiService {
 
-    String BASE_URL="http://192.168.114.101:8080/test/";
+    String BASE_URL="http://192.168.114.100:8080/test/";
 
     @FormUrlEncoded
     @POST("log.do")
@@ -25,7 +28,7 @@ public interface ApiService {
     Call<ResponseBody> getCode();
 
     @FormUrlEncoded
-    @POST("register.do")
+    @POST("registe.do")
     Call<ResponseBody> register(@FieldMap Map<String,String> param);
 
     /**
@@ -33,16 +36,24 @@ public interface ApiService {
      * @param id 类型
      * @return 响应数据
      */
-    @GET("txList.do")
-    Call<ResponseBody> getReaderOrListen(@Path("id") int id);
+    @GET("list.do?action=kulist&tid={id}")
+    Call<Question> getReaderOrListen(@Path("id") int id);
 
     /**
      * 获取问题和选项
      * @param id 阅读或听力id
      * @return 响应数据
      */
-    @GET("problem.do")
-    Call<ResponseBody> getProblems(@Path("id") int id);
+    @GET("list.do?action=xiaoList&id={id}")
+    Call<SProblem> getProblems(@Path("id") int id);
+
+    /**
+     * 获取阅读理解和翻译
+     * @param tx 题型
+     * @return 响应数据
+     */
+    @GET("list.do?action=twList&tx={tx}")
+    Call<SProblem> getWrite(@Path("tx") int tx);
 
     @Streaming
     @GET

@@ -40,6 +40,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("注册");
         presenter = new RegisterPresenter(this);
         presenter.refresh_code();
     }
@@ -86,7 +87,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
         map.put("pwd", password);
         map.put("truename", name);
         map.put("mobile", username);
-        map.put("code", code);
+        map.put("vcode", code);
         presenter.register(map);
     }
 

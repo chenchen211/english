@@ -13,4 +13,7 @@
     <string name="option">这是什么东西</string>
     <string name="type">阅读理解</string>
     <string name="hint_name">请输入姓名</string>
+    <string name="listen">听力练习</string>
+    <string name="translate">翻译练习</string>
+    <string name="writer">写作练习</string>
 </resources>

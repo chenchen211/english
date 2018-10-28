@@ -21,6 +21,7 @@ public class ListenActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("听力");
         player = new MediaPlayer();
         try {
             AssetFileDescriptor afd = getAssets().openFd("Faded.mp3");

@@ -25,7 +25,8 @@
         <activity android:name=".ui.RegisterActivity" />
         <activity android:name=".ui.ReaderActivity" />
         <activity android:name=".ui.ProblemActivity" />
-        <activity android:name=".ui.ListenActivity"></activity>
+        <activity android:name=".ui.ListenActivity" />
+        <activity android:name=".ui.ListActivity"></activity>
     </application>
 
 </manifest>

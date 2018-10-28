@@ -32,6 +32,9 @@ public class RegisterPresenter implements RegisterContract.Presenter {
             public void response(ResponseBody responseBody) {
                 try {
                     Base base = new Gson().fromJson(responseBody.string(),Base.class);
+                    if(base == null){
+                        view.tip("响应数据出错");
+                    }
                     if(base.getCode()==1){
                         view.success();
                     }else{

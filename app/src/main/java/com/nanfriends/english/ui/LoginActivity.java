@@ -34,6 +34,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("登录");
         presenter = new LoginPresenter(this);
         presenter.refresh_code();
     }

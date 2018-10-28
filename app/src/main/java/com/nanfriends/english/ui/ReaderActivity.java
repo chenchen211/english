@@ -23,7 +23,8 @@ public class ReaderActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setTitle("阅读理解");
+        showIcon();
         pdfView.fromAsset("android.pdf")
                 .defaultPage(0)
                 .onPageChange(new OnPageChangeListener() {
