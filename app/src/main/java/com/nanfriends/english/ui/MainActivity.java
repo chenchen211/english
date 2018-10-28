@@ -32,17 +32,22 @@ public class MainActivity extends BaseActivity {
 
     @Event({R.id.listen,R.id.reader,R.id.translate,R.id.writer})
     private void onClick(View view){
+        Intent intent = new Intent(this,ListActivity.class);
         switch (view.getId()){
             case R.id.listen:
-                Intent intent = new Intent();
+                intent.putExtra("tx",1);
                 changeActivity(intent,false);
                 break;
             case R.id.reader:
+                intent.putExtra("tx",2);
                 break;
             case R.id.translate:
+                intent.putExtra("tx",3);
                 break;
             case R.id.writer:
+                intent.putExtra("tx",4);
                 break;
         }
+        changeActivity(intent,false);
     }
 }

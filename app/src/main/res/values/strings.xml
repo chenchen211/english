@@ -16,4 +16,9 @@
     <string name="listen">听力练习</string>
     <string name="translate">翻译练习</string>
     <string name="writer">写作练习</string>
+    <string name="writer_problem">Suppose you are asked to give advice on whether to attend college at home or abroad, write an essay to state your opinion. You are required to write at least 150 words but no more than 200 words.</string>
+    <string name="writer_answer">Nowadays, there has been a heated discussion as to a better choice between attending college at home and abroad. Views on the topic vary greatly among people from different walks of life.Some believe that it is a better choice to study in domestic colleges, but others consider it better to study abroad. I totally agree with the latter idea for the reasons presented below. To begin with, it harms the society in that the greater the competition is, the higher the recruitment requirements will become.Therefore, with experiences of studying abroad, graduates will become more competitive in job hunting. Furthermore, it is beneficial to the students themselves to study abroad. Without the choice to pursue overseas study, many great scholars today would never have achieved such great success.From my perspective, it is crucial that the government should encourage people to pursue overseas study. Also it is crucial that people should understand the meaning and value of attending college abroad.Only in this way can we achieve greater success.</string>
+    <string name="level">四级</string>
+    <string name="show_answer">查看答案</string>
+    <string name="answer">答案：A</string>
 </resources>

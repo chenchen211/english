@@ -5,6 +5,7 @@ import com.chenchen.collections.http.HttpResult;
 import com.chenchen.collections.http.ServiceFactory;
 import com.chenchen.collections.utils.Download;
 import com.nanfriends.english.MyApp;
+import com.nanfriends.english.bean.Question;
 import com.nanfriends.english.contract.ReaderContract;
 import com.nanfriends.english.http.ApiService;
 
@@ -20,7 +21,7 @@ public class ReaderModel implements ReaderContract.Model {
     }
 
     @Override
-    public void getData(int id, HttpResult<ResponseBody> result) {
+    public void getData(int id, HttpResult<Question> result) {
         service.getReaderOrListen(id).enqueue(result);
     }
 }

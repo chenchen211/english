@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.chenchen.collections.widget.DividerItemDecoration;
 import com.nanfriends.english.R;
@@ -46,12 +47,18 @@ public class ProblemActivity extends BaseActivity {
         rv_problems.addItemDecoration(new DividerItemDecoration(this));
         rv_problems.setAdapter(new CommonAdapter<Problem>(this, R.layout.item_problem, problems) {
             @Override
-            protected void convert(ViewHolder holder, Problem problem, int position) {
+            protected void convert(final ViewHolder holder, final Problem problem, int position) {
                 holder.setText(R.id.problem_title,problem.getTitle());
                 holder.setText(R.id.anwser_a,"A. "+problem.getOption().getOption_A());
                 holder.setText(R.id.anwser_b,"B. "+problem.getOption().getOption_B());
                 holder.setText(R.id.anwser_c,"C. "+problem.getOption().getOption_C());
                 holder.setText(R.id.anwser_d,"D. "+problem.getOption().getOption_D());
+                holder.setOnClickListener(R.id.show_answer, new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        holder.setText(R.id.show_answer,problem.getAnswer());
+                    }
+                });
             }
         });
     }

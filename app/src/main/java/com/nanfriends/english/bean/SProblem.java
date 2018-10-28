@@ -2,6 +2,7 @@ package com.nanfriends.english.bean;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class SProblem extends Base {
@@ -17,7 +18,7 @@ public class SProblem extends Base {
         this.dataX = dataX;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable {
         /**
          * a : a
          * addtime : 1540602602162

@@ -3,9 +3,10 @@ package com.nanfriends.english.bean;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Question extends Base {
+public class Question extends Base{
 
     @SerializedName("data")
     private List<DataBean> dataX;
@@ -18,7 +19,7 @@ public class Question extends Base {
         this.dataX = dataX;
     }
 
-    public static class DataBean {
+    public static class DataBean  implements Serializable {
         /**
          * id : 16
          * level : 1

@@ -1,6 +1,7 @@
 package com.nanfriends.english.contract;
 
 import com.chenchen.collections.http.HttpResult;
+import com.nanfriends.english.bean.Question;
 import com.nanfriends.english.bean.Reader;
 
 import java.io.File;
@@ -9,7 +10,7 @@ import okhttp3.ResponseBody;
 
 public interface ReaderContract {
     interface Model {
-        void getData(int id, HttpResult<ResponseBody> result);
+        void getData(int id, HttpResult<Question> result);
     }
 
     interface View {
@@ -18,6 +19,6 @@ public interface ReaderContract {
     }
 
     interface Presenter {
-        void getData(int id);
+        void download(String path);
     }
 }

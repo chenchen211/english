@@ -40,7 +40,7 @@ public class BaseActivity extends AppCompatActivity {
         if(textView != null){textView.setText(title);}
     }
     protected void leftShow(boolean isShow){
-        if(isShow){
+        if(!isShow){
             ivLeft.setVisibility(View.GONE);
         }else{
             ivLeft.setVisibility(View.VISIBLE);

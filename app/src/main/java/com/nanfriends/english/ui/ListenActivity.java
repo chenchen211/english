@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.github.barteksc.pdfviewer.source.AssetSource;
 import com.nanfriends.english.R;
@@ -25,7 +26,7 @@ public class ListenActivity extends BaseActivity {
         player = new MediaPlayer();
         try {
             AssetFileDescriptor afd = getAssets().openFd("Faded.mp3");
-            player.setDataSource(afd.getFileDescriptor());
+            player.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
             player.prepare();
         } catch (IOException e) {
             e.printStackTrace();

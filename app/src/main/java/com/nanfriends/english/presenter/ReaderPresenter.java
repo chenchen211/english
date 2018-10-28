@@ -1,11 +1,13 @@
 package com.nanfriends.english.presenter;
 
 import android.os.Environment;
+import android.util.Log;
 
 import com.chenchen.collections.http.HttpResult;
 import com.chenchen.collections.utils.Download;
 import com.google.gson.Gson;
 import com.nanfriends.english.MyApp;
+import com.nanfriends.english.bean.Question;
 import com.nanfriends.english.bean.Reader;
 import com.nanfriends.english.contract.ReaderContract;
 import com.nanfriends.english.http.ApiService;
@@ -34,37 +36,23 @@ public class ReaderPresenter implements ReaderContract.Presenter {
     }
 
     @Override
-    public void getData(int id) {
-        model.getData(id, new HttpResult<ResponseBody>() {
-            @Override
-            public void response(ResponseBody responseBody) {
-                if(responseBody != null){
-                    try {
-                        Reader reader = new Gson().fromJson(responseBody.string(),Reader.class);
-                        String url = ApiService.BASE_URL;
-                        String path = reader.getPath();
-                        String[] split = path.split("//.");
-                        fileType = split[split.length-1];
-                        filePath += System.currentTimeMillis()+"."+fileType;
-                        download(url);
-                    } catch (IOException e) {
-                        view.tip(e.getMessage());
-                    }
-                }
-            }
-        });
-    }
-    private void download(String url){
+    public void download(String url){
+        String[] split = url.split("//.");
+        fileType = split[split.length-1];
+        filePath += System.currentTimeMillis()+"."+fileType;
+
+        url = ApiService.BASE_URL+url;
+
         Download instance = Download.getInstance(MyApp.instances.getContext(), url);
         instance.downloadWithFullPath(filePath, new Download.OnDownloadListener() {
             @Override
             public void onStart(long l) {
-
+                Log.i("reader", "onStart: "+l);
             }
 
             @Override
             public void onProgress(long l) {
-
+                Log.i("reader", "onStart: "+l);
             }
 
             @Override

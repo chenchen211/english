@@ -30,5 +30,13 @@
             android:id="@+id/anwser_d"
             style="@style/option_style" />
     </LinearLayout>
-
+    <TextView
+        android:padding="8dp"
+        android:layout_marginRight="18dp"
+        android:layout_gravity="right"
+        android:id="@+id/answer"
+        android:textColor="@color/red"
+        android:text="@string/show_answer"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
 </LinearLayout>
