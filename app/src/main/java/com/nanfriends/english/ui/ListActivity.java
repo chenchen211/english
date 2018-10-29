@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -58,7 +59,7 @@ public class ListActivity extends BaseActivity implements ListContract.View {
                 presenter.getWriteOrTranslate(tx);
                 break;
         }
-
+        leftShow(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this));
     }
@@ -67,7 +68,7 @@ public class ListActivity extends BaseActivity implements ListContract.View {
     public void setData(final Base data) {
         if(data instanceof Question){
             Question question = ((Question) data);
-            List<Question.DataBean> qlist = question.getDataX();
+            List<Question.DataBean> qlist = question.getData();
             recyclerView.setAdapter(new CommonAdapter<Question.DataBean>(this,R.layout.item_type,qlist) {
                 @Override
                 protected void convert(ViewHolder holder, final Question.DataBean dataBean, int position) {

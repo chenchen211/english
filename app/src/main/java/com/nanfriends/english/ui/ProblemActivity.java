@@ -6,11 +6,15 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.chenchen.collections.widget.DividerItemDecoration;
 import com.nanfriends.english.R;
 import com.nanfriends.english.bean.Option;
 import com.nanfriends.english.bean.Problem;
+import com.nanfriends.english.bean.SProblem;
+import com.nanfriends.english.contract.ProblemContract;
+import com.nanfriends.english.presenter.ProblemPresenter;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
@@ -21,42 +25,48 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ContentView(R.layout.activity_problem)
-public class ProblemActivity extends BaseActivity {
+public class ProblemActivity extends BaseActivity implements ProblemContract.View {
     @ViewInject(R.id.rv_problems)
     private RecyclerView rv_problems;
 
-    private List<Problem> problems = new ArrayList<>();
+    private ProblemContract.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        for (int i = 0; i < 10; i++) {
-            Problem problem = new Problem();
-            problem.setTitle(getString(R.string.problem));
-            problem.setAnswer("A");
-            Option option = new Option();
-            option.setOption_A(getString(R.string.option));
-            option.setOption_B(getString(R.string.option));
-            option.setOption_C(getString(R.string.option));
-            option.setOption_D(getString(R.string.option));
-            problem.setOption(option);
-            problems.add(problem);
-        }
-
+        setTitle("阅读理解");
+        leftShow(true);
         rv_problems.setLayoutManager(new LinearLayoutManager(this));
         rv_problems.addItemDecoration(new DividerItemDecoration(this));
-        rv_problems.setAdapter(new CommonAdapter<Problem>(this, R.layout.item_problem, problems) {
+        presenter = new ProblemPresenter(this);
+        presenter.getProblems(getIntent().getIntExtra("id",0));
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter = null;
+    }
+
+    @Override
+    public void tip(String tip) {
+        Toast.makeText(this, tip, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void setData(List<SProblem.DataBean> data) {
+        rv_problems.setAdapter(new CommonAdapter<SProblem.DataBean>(this, R.layout.item_problem, data) {
             @Override
-            protected void convert(final ViewHolder holder, final Problem problem, int position) {
-                holder.setText(R.id.problem_title,problem.getTitle());
-                holder.setText(R.id.anwser_a,"A. "+problem.getOption().getOption_A());
-                holder.setText(R.id.anwser_b,"B. "+problem.getOption().getOption_B());
-                holder.setText(R.id.anwser_c,"C. "+problem.getOption().getOption_C());
-                holder.setText(R.id.anwser_d,"D. "+problem.getOption().getOption_D());
-                holder.setOnClickListener(R.id.show_answer, new View.OnClickListener() {
+            protected void convert(final ViewHolder holder, final SProblem.DataBean problem, int position) {
+                holder.setText(R.id.problem_title,problem.getQuestion());
+                holder.setText(R.id.anwser_a,"A. "+problem.getA());
+                holder.setText(R.id.anwser_b,"B. "+problem.getB());
+                holder.setText(R.id.anwser_c,"C. "+problem.getC());
+                holder.setText(R.id.anwser_d,"D. "+problem.getD());
+                holder.setOnClickListener(R.id.answer, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        holder.setText(R.id.show_answer,problem.getAnswer());
+                        holder.setText(R.id.answer,"答案："+problem.getAnswer());
                     }
                 });
             }

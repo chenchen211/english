@@ -21,7 +21,7 @@ public class ReaderModel implements ReaderContract.Model {
     }
 
     @Override
-    public void getData(int id, HttpResult<Question> result) {
-        service.getReaderOrListen(id).enqueue(result);
+    public void download(String path, HttpResult<ResponseBody> result) {
+        service.download(path).enqueue(result);
     }
 }

@@ -41,6 +41,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("注册");
+        leftShow(true);
         presenter = new RegisterPresenter(this);
         presenter.refresh_code();
     }
@@ -55,7 +56,7 @@ public class RegisterActivity extends BaseActivity implements RegisterContract.V
                 presenter.refresh_code();
                 break;
             case R.id.btn_go_login:
-                changeActivity(LoginActivity.class,true);
+                finish();
                 break;
         }
     }

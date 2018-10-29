@@ -10,7 +10,7 @@ import okhttp3.ResponseBody;
 
 public interface ReaderContract {
     interface Model {
-        void getData(int id, HttpResult<Question> result);
+        void download(String path,HttpResult<ResponseBody> result);
     }
 
     interface View {

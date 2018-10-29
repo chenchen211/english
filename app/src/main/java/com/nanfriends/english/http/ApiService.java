@@ -13,12 +13,13 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
 public interface ApiService {
 
-    String BASE_URL="http://192.168.114.100:8080/test/";
+    String BASE_URL="http://192.168.2.235:8080/test/";
 
     @FormUrlEncoded
     @POST("log.do")
@@ -28,7 +29,7 @@ public interface ApiService {
     Call<ResponseBody> getCode();
 
     @FormUrlEncoded
-    @POST("registe.do")
+    @POST("regist.do")
     Call<ResponseBody> register(@FieldMap Map<String,String> param);
 
     /**
@@ -36,24 +37,24 @@ public interface ApiService {
      * @param id 类型
      * @return 响应数据
      */
-    @GET("list.do?action=kulist&tid={id}")
-    Call<Question> getReaderOrListen(@Path("id") int id);
+    @GET("list.do?action=ku_list")
+    Call<Question> getReaderOrListen(@Query("tid") int id);
 
     /**
      * 获取问题和选项
      * @param id 阅读或听力id
      * @return 响应数据
      */
-    @GET("list.do?action=xiaoList&id={id}")
-    Call<SProblem> getProblems(@Path("id") int id);
+    @GET("list.do?action=xiao_list")
+    Call<SProblem> getProblems(@Query("id") int id);
 
     /**
      * 获取阅读理解和翻译
      * @param tx 题型
      * @return 响应数据
      */
-    @GET("list.do?action=twList&tx={tx}")
-    Call<SProblem> getWrite(@Path("tx") int tx);
+    @GET("list.do?action=tr_list")
+    Call<SProblem> getWrite(@Query("tx") int tx);
 
     @Streaming
     @GET

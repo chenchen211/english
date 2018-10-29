@@ -38,7 +38,7 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
         presenter = new LoginPresenter(this);
         presenter.refresh_code();
     }
-    @Event({R.id.btn_login,R.id.btn_go_register})
+    @Event({R.id.btn_login,R.id.btn_go_register,R.id.iv_verify})
     private void onClick(View view){
         switch (view.getId()){
             case R.id.btn_login:
@@ -46,6 +46,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
                 break;
             case R.id.btn_go_register:
                 changeActivity(RegisterActivity.class,false);
+                break;
+            case R.id.iv_verify:
+                presenter.refresh_code();
                 break;
         }
     }

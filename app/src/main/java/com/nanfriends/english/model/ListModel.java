@@ -27,6 +27,6 @@ public class ListModel implements ListContract.Model {
 
     @Override
     public void getWriteOrTranslate(int tx, HttpResult<SProblem> result) {
-        service.getProblems(tx).enqueue(result);
+        service.getWrite(tx).enqueue(result);
     }
 }

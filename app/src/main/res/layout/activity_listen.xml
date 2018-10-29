@@ -7,11 +7,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.ListenActivity">
+    <include layout="@layout/layout_title"/>
     <ImageView
         android:src="@mipmap/icon_play"
+        android:layout_margin="16dp"
         android:id="@+id/iv_audio"
-        android:layout_width="48dp"
-        android:layout_height="48dp" />
+        android:layout_width="64dp"
+        android:layout_height="64dp" />
     <android.support.v7.widget.RecyclerView
         android:id="@+id/listen"
         android:layout_width="match_parent"

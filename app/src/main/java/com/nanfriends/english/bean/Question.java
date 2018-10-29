@@ -8,15 +8,14 @@ import java.util.List;
 
 public class Question extends Base{
 
-    @SerializedName("data")
-    private List<DataBean> dataX;
+    private List<DataBean> data;
 
-    public List<DataBean> getDataX() {
-        return dataX;
+    public List<DataBean> getData() {
+        return data;
     }
 
-    public void setDataX(List<DataBean> dataX) {
-        this.dataX = dataX;
+    public void setData(List<DataBean> data) {
+        this.data = data;
     }
 
     public static class DataBean  implements Serializable {
@@ -82,6 +81,18 @@ public class Question extends Base{
 
         public void setTx(int tx) {
             this.tx = tx;
+        }
+
+        @Override
+        public String toString() {
+            return "DataBean{" +
+                    "id=" + id +
+                    ", level=" + level +
+                    ", path='" + path + '\'' +
+                    ", time=" + time +
+                    ", title='" + title + '\'' +
+                    ", tx=" + tx +
+                    '}';
         }
     }
 }

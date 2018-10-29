@@ -1,13 +1,18 @@
 package com.nanfriends.english.ui;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.chenchen.collections.xframe.utils.permission.XPermission;
 import com.github.barteksc.pdfviewer.PDFView;
 import com.github.barteksc.pdfviewer.listener.OnPageChangeListener;
 import com.github.barteksc.pdfviewer.listener.OnPageErrorListener;
@@ -24,10 +29,12 @@ import java.io.File;
 
 @ContentView(R.layout.activity_reader)
 public class ReaderActivity extends BaseActivity implements ReaderContract.View {
+    private static final int REQUEST_CODE = 205;
     @ViewInject(R.id.pdfView)
     PDFView pdfView;
 
     private Question.DataBean data;
+    private ReaderPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,23 +44,50 @@ public class ReaderActivity extends BaseActivity implements ReaderContract.View 
         Intent intent = getIntent();
         data = (Question.DataBean) intent.getSerializableExtra("data");
         if(data!=null){
-            ReaderPresenter presenter = new ReaderPresenter(this);
-            presenter.download(data.getPath());
+            presenter = new ReaderPresenter(this);
+            if(ActivityCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},REQUEST_CODE);
+            }else{
+                presenter.download(data.getPath());
+            }
         }
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == REQUEST_CODE){
+            presenter.download(data.getPath());
+        }else{
+            tip("权限获取失败");
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        pdfView.recycle();
+        pdfView = null;
+    }
+
     @Event({R.id.iv_title_right})
     private void onClick(View view){
         switch (view.getId()){
             case R.id.iv_title_right:
-                changeActivity(ProblemActivity.class,false);
+                Intent intent = new Intent(this,ProblemActivity.class);
+                intent.putExtra("id",data.getId());
+                changeActivity(intent,false);
                 break;
         }
     }
 
     @Override
-    public void setFile(File file) {
+    public void setFile(final File file) {
         if(!file.exists()){
             tip("文章加载失败");
+            Log.i("ReaderActivity", "setFile: "+file.getAbsolutePath());
+            return;
         }
 
         pdfView.fromFile(file)
@@ -71,10 +105,11 @@ public class ReaderActivity extends BaseActivity implements ReaderContract.View 
                     @SuppressLint("LongLogTag")
                     @Override
                     public void onPageError(int page, Throwable t) {
-                        tip("文章加载出错第【"+page+"】页。错误原因："+t.getMessage());
+                        Log.i("ReaderActivity", "onPageError: "+"文章加载出错第【"+page+"】页。错误原因："+t.getMessage());
                     }
                 })
                 .load();
+
     }
 
     @Override

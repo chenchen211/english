@@ -34,6 +34,7 @@ public class RegisterPresenter implements RegisterContract.Presenter {
                     Base base = new Gson().fromJson(responseBody.string(),Base.class);
                     if(base == null){
                         view.tip("响应数据出错");
+                        return;
                     }
                     if(base.getCode()==1){
                         view.success();
