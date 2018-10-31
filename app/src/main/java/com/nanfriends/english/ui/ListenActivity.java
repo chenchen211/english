@@ -3,20 +3,18 @@ package com.nanfriends.english.ui;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chenchen.collections.widget.DividerItemDecoration;
-import com.github.barteksc.pdfviewer.source.AssetSource;
 import com.nanfriends.english.R;
 import com.nanfriends.english.bean.Question;
 import com.nanfriends.english.bean.SProblem;
@@ -130,6 +128,9 @@ public class ListenActivity extends BaseActivity implements ReaderContract.View,
                         @Override
                         public void onClick(View v) {
                             holder.setText(R.id.answer,"答案："+problem.getAnswer());
+                            TextView view = (TextView) holder.getView(R.id.item_jiexi);
+                            view.setText("解析："+problem.getJiexi());
+                            view.setVisibility(View.VISIBLE);
                         }
                     });
                 }

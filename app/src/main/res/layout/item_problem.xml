@@ -39,4 +39,14 @@
         android:text="@string/show_answer"
         android:layout_width="wrap_content"
         android:layout_height="match_parent" />
+    <TextView
+        android:visibility="gone"
+        android:layout_marginBottom="18dp"
+        android:id="@+id/item_jiexi"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:textColor="@color/red"
+        android:text="@string/jiexi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

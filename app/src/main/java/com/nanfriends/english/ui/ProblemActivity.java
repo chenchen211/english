@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chenchen.collections.widget.DividerItemDecoration;
@@ -67,6 +68,9 @@ public class ProblemActivity extends BaseActivity implements ProblemContract.Vie
                     @Override
                     public void onClick(View v) {
                         holder.setText(R.id.answer,"答案："+problem.getAnswer());
+                        TextView view = (TextView) holder.getView(R.id.item_jiexi);
+                        view.setText("解析："+problem.getJiexi());
+                        view.setVisibility(View.VISIBLE);
                     }
                 });
             }

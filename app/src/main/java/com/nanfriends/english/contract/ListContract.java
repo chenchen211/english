@@ -3,7 +3,6 @@ package com.nanfriends.english.contract;
 import com.chenchen.collections.http.HttpResult;
 import com.nanfriends.english.bean.Base;
 import com.nanfriends.english.bean.Question;
-import com.nanfriends.english.bean.Reader;
 import com.nanfriends.english.bean.SProblem;
 
 public interface ListContract {

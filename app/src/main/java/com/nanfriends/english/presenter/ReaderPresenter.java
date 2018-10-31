@@ -14,6 +14,8 @@ import com.nanfriends.english.http.ApiService;
 import com.nanfriends.english.http.Download;
 import com.nanfriends.english.model.ReaderModel;
 
+import org.xutils.common.util.MD5;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -39,30 +41,34 @@ public class ReaderPresenter implements ReaderContract.Presenter {
     public void download(String url){
         String[] split = url.split("\\.");
         String fileType = split[split.length - 1];
-        filePath += System.currentTimeMillis()+"."+fileType;
+        filePath += MD5.md5(url)+"."+fileType;
+        final File file = new File(filePath);
+        if(file.exists()){//如果文件存在，直接显示，不存在则从网络下载
+            view.setFile(file);
+        }else{
+            url = ApiService.BASE_URL+url;
+            Download instance = Download.getInstance(MyApp.instances.getContext(), url);
+            instance.downloadWithFullPath(filePath, new Download.OnDownloadListener() {
+                @Override
+                public void onStart(long l) {
+                    Log.i("reader", "onStart: "+l);
+                }
 
-        url = ApiService.BASE_URL+url;
-        Download instance = Download.getInstance(MyApp.instances.getContext(), url);
-        instance.downloadWithFullPath(filePath, new Download.OnDownloadListener() {
-            @Override
-            public void onStart(long l) {
-                Log.i("reader", "onStart: "+l);
-            }
+                @Override
+                public void onProgress(long l) {
+                    Log.i("reader", "onStart: "+l);
+                }
 
-            @Override
-            public void onProgress(long l) {
-                Log.i("reader", "onStart: "+l);
-            }
+                @Override
+                public void onFinish(String s) {
+                    view.setFile(file);
+                }
 
-            @Override
-            public void onFinish(String s) {
-                view.setFile(new File(filePath));
-            }
-
-            @Override
-            public void onFailure(String s) {
-                Log.i("reader", "onFailure: "+s);
-            }
-        });
+                @Override
+                public void onFailure(String s) {
+                    Log.i("reader", "onFailure: "+s);
+                }
+            });
+        }
     }
 }

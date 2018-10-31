@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/gary"
+    android:background="@color/white"
     tools:context=".ui.WriterActivity">
     <include layout="@layout/layout_title"/>
     <ScrollView
@@ -25,6 +25,20 @@
                 android:text="@string/writer_problem"
                 android:textSize="18sp" />
             <TextView
+                android:background="@color/gary"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+            <TextView
+                android:padding="8dp"
+                android:layout_marginRight="18dp"
+                android:layout_gravity="right"
+                android:id="@+id/answer"
+                android:textColor="@color/red"
+                android:text="@string/show_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:visibility="gone"
                 android:background="@color/white"
                 android:id="@+id/show_answer"
                 android:textSize="16sp"
