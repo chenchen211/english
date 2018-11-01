@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <RadioGroup
+        android:id="@+id/options"
         android:padding="16dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -30,5 +31,14 @@
             android:id="@+id/anwser_d"
             style="@style/option_style" />
     </RadioGroup>
-
+    <TextView
+        android:visibility="gone"
+        android:layout_marginBottom="18dp"
+        android:id="@+id/answer"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:textColor="@color/red"
+        android:text="@string/jiexi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

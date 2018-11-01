@@ -3,6 +3,7 @@ package com.nanfriends.english.ui;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,10 +12,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chenchen.collections.widget.DividerItemDecoration;
+import com.nanfriends.english.ProblemAdapter;
 import com.nanfriends.english.R;
 import com.nanfriends.english.bean.Question;
 import com.nanfriends.english.bean.SProblem;
@@ -116,25 +120,7 @@ public class ListenActivity extends BaseActivity implements ReaderContract.View,
     @Override
     public void setData(List<SProblem.DataBean> data) {
         if(data != null){
-            recyclerView.setAdapter(new CommonAdapter<SProblem.DataBean>(this, R.layout.item_problem, data) {
-                @Override
-                protected void convert(final ViewHolder holder, final SProblem.DataBean problem, int position) {
-                    holder.setText(R.id.problem_title,problem.getQuestion());
-                    holder.setText(R.id.anwser_a,"A. "+problem.getA());
-                    holder.setText(R.id.anwser_b,"B. "+problem.getB());
-                    holder.setText(R.id.anwser_c,"C. "+problem.getC());
-                    holder.setText(R.id.anwser_d,"D. "+problem.getD());
-                    holder.setOnClickListener(R.id.answer, new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            holder.setText(R.id.answer,"答案："+problem.getAnswer());
-                            TextView view = (TextView) holder.getView(R.id.item_jiexi);
-                            view.setText("解析："+problem.getJiexi());
-                            view.setVisibility(View.VISIBLE);
-                        }
-                    });
-                }
-            });
+            recyclerView.setAdapter(new ProblemAdapter(this,R.layout.item_problem_vertical,data));
         }
     }
 }

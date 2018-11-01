@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:background="@color/green"
     android:gravity="center_vertical"
-    android:layout_height="58dp">
+    android:layout_height="64dp">
     <ImageView
         android:src="@mipmap/icon_back"
         android:layout_marginLeft="8dp"

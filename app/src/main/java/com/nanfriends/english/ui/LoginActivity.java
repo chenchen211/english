@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.chenchen.collections.utils.SPUtils;
 import com.nanfriends.english.R;
 import com.nanfriends.english.contract.LoginContract;
 import com.nanfriends.english.presenter.LoginPresenter;
@@ -31,12 +32,22 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     private EditText etVerify;
 
     private LoginContract.Presenter presenter;
+    private String username;
+    private String password;
+    private SPUtils spUtils;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("登录");
-        presenter = new LoginPresenter(this);
-        presenter.refresh_code();
+        spUtils = SPUtils.getInstance(this, "english");
+        String username = (String) spUtils.get("username","");
+        if(TextUtils.isEmpty(username)){
+            presenter = new LoginPresenter(this);
+            presenter.refresh_code();
+        }else{
+            changeActivity(MainActivity.class,true);
+        }
     }
     @Event({R.id.btn_login,R.id.btn_go_register,R.id.iv_verify})
     private void onClick(View view){
@@ -54,8 +65,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     }
 
     private void doLogin() {
-        String username = etUsername.getText().toString();
-        String password = etPassword.getText().toString();
+        username = etUsername.getText().toString();
+        password = etPassword.getText().toString();
         String code = etVerify.getText().toString();
         Map<String, String> map = new HashMap<>();
         if(TextUtils.isEmpty(username)){
@@ -73,6 +84,8 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
 
     @Override
     public void success() {
+        spUtils.put("username",username);
+        spUtils.put("password",password);
         changeActivity(MainActivity.class,true);
     }
 

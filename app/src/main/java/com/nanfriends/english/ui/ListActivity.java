@@ -22,7 +22,6 @@ import com.zhy.adapter.recyclerview.base.ViewHolder;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @ContentView(R.layout.activity_list)

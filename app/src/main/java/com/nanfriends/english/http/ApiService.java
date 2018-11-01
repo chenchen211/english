@@ -19,7 +19,7 @@ import retrofit2.http.Url;
 
 public interface ApiService {
 
-    String BASE_URL="http://192.168.114.102:8080/test/";
+    String BASE_URL="http://192.168.114.101:8080/test/";
 
     @FormUrlEncoded
     @POST("log.do")

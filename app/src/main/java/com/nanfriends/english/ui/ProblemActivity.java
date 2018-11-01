@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chenchen.collections.widget.DividerItemDecoration;
+import com.nanfriends.english.ProblemAdapter;
 import com.nanfriends.english.R;
 import com.nanfriends.english.bean.Option;
 import com.nanfriends.english.bean.Problem;
@@ -56,24 +57,6 @@ public class ProblemActivity extends BaseActivity implements ProblemContract.Vie
 
     @Override
     public void setData(List<SProblem.DataBean> data) {
-        rv_problems.setAdapter(new CommonAdapter<SProblem.DataBean>(this, R.layout.item_problem, data) {
-            @Override
-            protected void convert(final ViewHolder holder, final SProblem.DataBean problem, int position) {
-                holder.setText(R.id.problem_title,problem.getQuestion());
-                holder.setText(R.id.anwser_a,"A. "+problem.getA());
-                holder.setText(R.id.anwser_b,"B. "+problem.getB());
-                holder.setText(R.id.anwser_c,"C. "+problem.getC());
-                holder.setText(R.id.anwser_d,"D. "+problem.getD());
-                holder.setOnClickListener(R.id.answer, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        holder.setText(R.id.answer,"答案："+problem.getAnswer());
-                        TextView view = (TextView) holder.getView(R.id.item_jiexi);
-                        view.setText("解析："+problem.getJiexi());
-                        view.setVisibility(View.VISIBLE);
-                    }
-                });
-            }
-        });
+        rv_problems.setAdapter(new ProblemAdapter(this,R.layout.item_problem_vertical,data));
     }
 }
