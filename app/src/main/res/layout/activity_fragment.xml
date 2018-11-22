@@ -4,16 +4,22 @@
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ui.FragmentActivity">
+
     <include layout="@layout/layout_title"/>
-    <FrameLayout
+    <android.support.v4.view.ViewPager
         android:id="@+id/frag_container"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
-    </FrameLayout>
-    <RadioGroup
+    </android.support.v4.view.ViewPager>
+    <TextView
+        android:background="@color/gary"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+    <LinearLayout
         android:id="@+id/bottom"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -21,10 +27,9 @@
         <LinearLayout
             android:id="@+id/ll_home"
             style="@style/home_bottom">
-            <RadioButton
+            <ImageView
                 android:id="@+id/rb_home"
-                android:checked="true"
-                android:background="@drawable/selector_home"
+                android:src="@drawable/selector_home"
                 style="@style/rb_style" />
             <TextView
                 android:text="@string/home"
@@ -33,9 +38,9 @@
         <LinearLayout
             android:id="@+id/ll_project"
             style="@style/home_bottom">
-            <RadioButton
+            <ImageView
                 android:id="@+id/rb_project"
-                android:background="@drawable/selector_note"
+                android:src="@drawable/selector_note"
                 style="@style/rb_style" />
             <TextView
                 android:text="@string/project"
@@ -44,9 +49,9 @@
         <LinearLayout
             android:id="@+id/ll_note"
             style="@style/home_bottom">
-            <RadioButton
+            <ImageView
                 android:id="@+id/rb_note"
-                android:background="@drawable/selector_snote"
+                android:src="@drawable/selector_snote"
                 style="@style/rb_style" />
             <TextView
                 android:text="@string/note"
@@ -55,13 +60,13 @@
         <LinearLayout
             android:id="@+id/ll_mine"
             style="@style/home_bottom">
-            <RadioButton
+            <ImageView
                 android:id="@+id/rb_mine"
-                android:background="@drawable/selector_mine"
+                android:src="@drawable/selector_mine"
                 style="@style/rb_style" />
             <TextView
                 android:text="@string/mine"
                 style="@style/tv_style" />
         </LinearLayout>
-    </RadioGroup>
+    </LinearLayout>
 </LinearLayout>
