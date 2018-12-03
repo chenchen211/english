@@ -1,16 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.fragment.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/home_text"
+    <LinearLayout
+        android:id="@+id/listen"
+        android:layout_marginBottom="1dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:orientation="horizontal"
         android:gravity="center"
-        android:text="@string/hello_blank_fragment" />
-
-</FrameLayout>
+        android:background="@color/white"
+        android:layout_height="48dp">
+        <TextView
+            android:gravity="center"
+            android:text="@string/listen"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:src="@mipmap/icon_right_gray"
+            android:layout_width="32dp"
+            android:layout_height="32dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/reader"
+        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/white"
+        android:layout_height="48dp">
+        <TextView
+            android:gravity="center"
+            android:text="@string/type"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:src="@mipmap/icon_right_gray"
+            android:layout_width="32dp"
+            android:layout_height="32dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/translate"
+        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/white"
+        android:layout_height="48dp">
+        <TextView
+            android:gravity="center"
+            android:text="@string/translate"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:src="@mipmap/icon_right_gray"
+            android:layout_width="32dp"
+            android:layout_height="32dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/writer"
+        android:layout_marginBottom="1dp"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/white"
+        android:layout_height="48dp">
+        <TextView
+            android:gravity="center"
+            android:text="@string/writer"
+            android:textSize="18sp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:src="@mipmap/icon_right_gray"
+            android:layout_width="32dp"
+            android:layout_height="32dp" />
+    </LinearLayout>
+</LinearLayout>
